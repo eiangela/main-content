@@ -9,15 +9,15 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
 import ContentMain from "../components/ContentMain.vue"
-import ContentRight from "../components/ContentRight.vue"
-export default {
-  components: {
-    ContentMain,
-    ContentRight
-  }
-}
+import { useProductsStore } from "../stores/products"
+
+let productsStore = useProductsStore();
+let products = productsStore.products;
+console.log(products.value);
+
+
 </script>
 
 <style>
