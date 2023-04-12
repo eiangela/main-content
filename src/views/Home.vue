@@ -11,12 +11,6 @@
 
 <script setup>
 import ContentMain from "../components/ContentMain.vue"
-import { useProductsStore } from "../stores/products"
-
-let productsStore = useProductsStore();
-let products = productsStore.products;
-console.log(products.value);
-
 
 </script>
 

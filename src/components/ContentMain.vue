@@ -1,18 +1,34 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="6" md="4" lg="3" v-for="(product, index) in products.value" :key="index">
-        <v-card height="360px">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+        v-for="(product, index) in productsStore.productsFilter.value"
+        :key="index"
+      >
+        <v-card >
           <v-img
             :src="product.image"
             height="170px"
             cover
             class="bg-grey-lighten-2"
           ></v-img>
-          <v-card-title class="text-h6 main-title">{{ product.name }}</v-card-title>
-          <div class="main-text">{{ product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</div>
+          <v-card-title class="text-h6 main-title">{{
+            product.name
+          }}</v-card-title>
+          <div class="main-text text-right mr-3">
+            {{
+              product.price.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })
+            }}
+          </div>
           <v-card-actions>
-            <v-spacer></v-spacer>
+            <v-btn @click="cartStore.addCart(product.id)"> Button </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -20,19 +36,13 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
 import { useProductsStore } from "../stores/products";
+import { useCartStore } from "../stores/cart";
 
-export default {
-  name: "ContentMain",
-  setup() {
-    const productsStore = useProductsStore();
+const productsStore = useProductsStore();
+const cartStore = useCartStore();
 
-    return {
-      products: productsStore.products,
-    };
-  },
-};
 </script>
 
 <style scoped>
