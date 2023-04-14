@@ -28,7 +28,7 @@
             }}
           </div>
           <v-card-actions>
-            <v-btn @click="cartStore.addCart(product.id)"> Button </v-btn>
+            <v-btn @click="cartStore.addCartItem(product.id)"> Button </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
